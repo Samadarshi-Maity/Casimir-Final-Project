@@ -5,6 +5,7 @@ Created on Mon Jan 31 15:14:06 2022
 
 @author: jose
 """
+import numpy as np
 
 # INPUTS
 N = 0
@@ -19,18 +20,14 @@ kPitoR = 0
 Rstarved = 0
 Pio = 0
 delta = 0
-
+tmax = 20
+t = np.linspace(0,tmax,0.01)
 
 # DEDUCED VARIABLES
 
-def dT_dt(T,tau,R,Pi):
-    return(gamma - mu - mu*T)
-
-def dtau_dt(T,tau,R,Pi):
-    return(mu - gamma + mu*xi*Ro*kPitoR/(kPitoR + Pi) - mu*tau)
-
-def dR_dt(T,tau,R,Pi):
-    return(mu*Ro*(kPitoR/kPitoR + Pi) - mu*R)
-
-def dPi_dt(T,tau,R,Pi):
-    return(Pio*Rstarved + O-(delta + M)*Pi)
+def rates(T,tau,R,Pi):
+    dT_dt = gamma - mu - mu*T
+    dtau_dt = mu - gamma + mu*xi*Ro*kPitoR/(kPitoR + Pi) - mu*tau
+    dR_dt = mu*Ro*(kPitoR/kPitoR + Pi) - mu*R
+    dPi_dt = Pio*Rstarved + O-(delta + M)*Pi
+    return (dT_dt,dtau_dt,dR_dt,dPi_dt)
