@@ -8,20 +8,18 @@ Created on Mon Jan 31 15:14:06 2022
 import numpy as np
 
 # INPUTS
-N = 0
+N = 0.5
 O = 0
 M = 0
 I = 0
-gamma = 0
-mu = 0
-xi = 0
-Ro = 0
-kPitoR = 0
-Rstarved = 0
-Pio = 0
-delta = 0
-tmax = 20
-t = np.linspace(0,tmax,0.01)
+gamma = 1
+mu = 1
+xi = 7
+Ro = 8
+kPitoR = 9
+Rstarved = 10
+Pio = 11
+delta = 12
 
 # DEDUCED VARIABLES
 
