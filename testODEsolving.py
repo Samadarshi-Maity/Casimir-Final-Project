@@ -11,7 +11,8 @@ tau_init=0.2
 R_init=0.15
 Pi_init=10
 
-variables_out=spint.odeint(dyneq.rates,[T_init,tau_init,R_init,Pi_init],t)
+rates = lambda variables,t : dyneq.rates(variables,t,N=1)
+variables_out=spint.odeint(rates,[T_init,tau_init,R_init,Pi_init],t)
 
 print(variables_out)
 
