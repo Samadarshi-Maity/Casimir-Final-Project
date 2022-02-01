@@ -13,7 +13,14 @@ Pi_init=10
 
 variables_out=spint.odeint(dyneq.rates,[T_init,tau_init,R_init,Pi_init],t)
 
-print(variables_out)
+# removed the print statement
+
+# ~~~~~~~~  Save the array into a text file ~~~~~~~~~~~~~
+print('Saving the population arrray')
+np.savetxt('populations.txt',variables_out, fmt = '%.2e')
+#a_file = open("populations.txt", "w")
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 T=variables_out[0]
 tau=variables_out[1]
