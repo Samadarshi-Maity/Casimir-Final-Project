@@ -48,10 +48,10 @@ def non_linear_solution(var_set, NOMI):
     ### Set of equations
     gamma = N*(Rmax-R)*tau/(tau+kTauOnGamma)
     mu = muMax*R*(1 - I)*(T/(T + kTOnMu))
-    a1 = gamma - mu - mu*T
-    a2 = mu- gamma + mu*xi*Ro*kPitoR/(kPitoR + Pi) - mu*tau
-    a3 = mu*Ro*(kPitoR/kPitoR + Pi) - mu*R
-    a4 = Pi0*(kTOnMu/(kTOnMu + T)) + O-(delta + M)*Pi
+    a1 = gamma - mu*(1 - T)
+    a2 = mu*(1 - gamma + mu*xi*Ro*kPitoR/(kPitoR + Pi) - tau)
+    a3 = mu*(Ro*(kPitoR/(kPitoR + Pi)) - R)
+    a4 = Pi0*(kTOnMu/(kTOnMu + T)) + O - (delta + M)*Pi
 
     return np.array([a1, a2, a3, a4])
 
@@ -62,9 +62,9 @@ def non_linear_solution(var_set, NOMI):
 NOMI = [1,0,0,0]
 
 # provide a starting value for fsolve
-y0 = [0.06,-0.027,0.025,10.55]
-y01 = [2,2,2,2]
-var_set = fsolve(non_linear_solution, y0, args = NOMI, maxfev = 10000);
+y0 = [0.06,0.03,0.03,14.55]
+#y0 = [1,1,1,1]
+var_set = fsolve(non_linear_solution, y0, args = NOMI,xtol = 1E-09, maxfev = 10000);
 
 print(var_set);
 
