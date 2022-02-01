@@ -6,7 +6,7 @@ matplotlib.style.use('classic')
 import matplotlib.pyplot as plt
 from matplotlib.ticker import (MultipleLocator)
 
-tmax=1
+tmax = 1
 nPts=100
 t=np.linspace(0,tmax,nPts)
 
@@ -14,21 +14,16 @@ T_init=0.1
 tau_init=0.2
 R_init=0.15
 Pi_init=10
+variables0 = np.array([T_init,tau_init,R_init,Pi_init])
 
-rates = lambda variables,t : dyneq.rates(variables,t,N=1)
-variables_out=spint.odeint(rates,[T_init,tau_init,R_init,Pi_init],t)
-
-
-# ~~~~~~~~  Save the array into a text file ~~~~~~~~~~~~~
-print('Saving the population arrray')
-np.savetxt('populations.txt',variables_out, fmt = '%.2e')
-#a_file = open("populations.txt", "w")
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-T=variables_out[0]
-tau=variables_out[1]
-R=variables_out[2]
-Pi=variables_out[3]
+t_init = -2.5
+t_end = 3
+I = [0,0]
+M = [1,1]
+N = [0.5,2]
+O = [1,1]
+T,tau,R,Pi,t = dyneq.solveODEshift(t_init,t_end,variables0,I,M,N,O)
+mu = dyneq.growth_rate(T,R)
+plt.plot(t,mu)
 
 
