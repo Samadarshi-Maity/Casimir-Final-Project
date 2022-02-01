@@ -12,8 +12,6 @@ def solveODEconstantInputs(t1,t2,variables0,I=0,M=0,N=0,O=0,dt=0.01):
     rates = lambda variables,t : dyneq.rates(variables,t,N=1)
     variables_out=spint.odeint(rates,variables0,t)
     
-    timeAndVariables_out=np.concatenate((t,variables_out))
-    
     return variables_out
 
 def solveODEshift(t1,t2,I=np.array([0,0]),M=np.array([0,0]),N=np.array([0,0]),O=np.array([0,0]),t_SS_finding=10,variables_SS_finding=[0.1,0.2,0.15,10]):
