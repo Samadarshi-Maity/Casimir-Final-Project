@@ -45,7 +45,7 @@ def rates(Variables,t,I=0,M=0,N=0,O=0):
     dPi_dt = Pi0*Rstarved + O-(delta + M)*Pi
     return [dT_dt,dtau_dt,dR_dt,dPi_dt]
 
-def solveODEconstantInputs(t1,t2,variables0,I=0,M=0,N=0,O=0,dt=0.01):
+def solveODEconstantInputs(t1,t2,variables0,I,M,N,O,dt=0.01):
     '''Solves ODE between t1 and t2 for constant inputs I,M,N,O'''
     
     nPts=math.floor((t2-t1)/dt)
