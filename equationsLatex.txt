@@ -1,0 +1,22 @@
+\begin{equation}
+    \begin{cases}
+    		\frac{dT}{dt}=\gamma -\mu -\mu T\\
+    		\frac{d\tau }{dt}=\mu -\gamma +\mu \xi R_0 \frac{k_{\Pi\rightfootline R}}{k_{\Pi\rightfootline R}+\Pi} -\mu \tau\\
+			\frac{dR}{dt}=\mu R_0 \frac{k_{\Pi\rightfootline R}}{k_{\Pi\rightfootline R}+\Pi}-\mu R\\
+			\frac{d\Pi}{dt}=\Pi_0 R_{starved}-\delta\Pi
+    \end{cases} \textrm{\hspace{35pt} With:\hspace{10pt}}
+    \begin{cases}
+     		\gamma=N (R_{max}-R) \frac{\tau}{\tau +k_{\tau \rightarrow \gamma}}\\
+     		\mu=\mu_{max} R \frac{T}{T+k_{T\rightarrow \mu}}\\
+     		R_{starved}=\frac{k_{T\rightarrow \mu}}{k_{T\rightarrow \mu}+T}
+    \end{cases}
+\end{equation}
+\vspace{10pt}
+\begin{equation}
+    \begin{cases}
+      		\gamma =\mu (1+T)\\
+      		T+\tau=\xi R\\
+           	R=R_0 \frac{k_{\Pi\rightfootline R}}{k_{\Pi\rightfootline R}+\Pi}\\
+           	\Pi=\frac{\Pi_0 R_{starved}}{\delta}
+    \end{cases}
+\end{equation}
