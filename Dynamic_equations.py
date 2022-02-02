@@ -60,13 +60,13 @@ def growth_rate(T,R,I=0):
     mu = muMax*R*(1 - I)*(T/(T + kTOnMu))
     return(mu)
 
-def solveODEshift(t1,t2,variables0,I,M,N,O,dt=0.01):
+def solveODEshift(t1,t2,variables0,I,M,N,O,dt=0.001):
     I_init = I[0]
     M_init = M[0]
     N_init = N[0]
     O_init = O[0]
     t_before,variables_out = solveODEconstantInputs(t1,0,variables0,
-                                         I_init,M_init,N_init,O_init,dt=0.01)
+                                         I_init,M_init,N_init,O_init,dt)
     T_before=variables_out.T[0]
     tau_before=variables_out.T[1]
     R_before=variables_out.T[2]
@@ -77,7 +77,7 @@ def solveODEshift(t1,t2,variables0,I,M,N,O,dt=0.01):
     O_end = O[1]
     variables0 = [T_before[-1],tau_before[-1],R_before[-1],Pi_before[-1]]
     t_after, variables_out = solveODEconstantInputs(0,t2,variables0,I_end,
-                                                    M_end,N_end,O_end,dt=0.01)
+                                                    M_end,N_end,O_end,dt)
     T_after=variables_out.T[0]
     tau_after=variables_out.T[1]
     R_after=variables_out.T[2]
