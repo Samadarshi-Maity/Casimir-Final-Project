@@ -24,11 +24,16 @@ Pi0 = 47053.186045
 
 def rates(Variables,t,I=0,M=0,N=0,O=0):
     """
-    This function represent the set of differential equations to that wil
-    be solved.
-    Input:
-        Variables: T,tau,R, Pi
-    Output:
+    Set of dynamic equations for the growth of bacterias
+    Parameters
+    ----------
+        Variables : 4-element sequence 
+                    T, tau, R, Pi
+        t         : float
+                    time 
+        I,M,N,O   : float
+                    constants
+            
         
     """
     T = Variables[0]
@@ -46,7 +51,37 @@ def rates(Variables,t,I=0,M=0,N=0,O=0):
     return [dT_dt,dtau_dt,dR_dt,dPi_dt]
 
 def solveODEconstantInputs(t1,t2,variables0,I,M,N,O,dt=0.01):
-    '''Solves ODE between t1 and t2 for constant inputs I,M,N,O'''
+    '''
+    Solving the differential equation for the set of dynamic equations rate
+    
+
+    Parameters
+    ----------
+    t1 : float
+        DESCRIPTION.
+    t2 : float
+        DESCRIPTION.
+    variables0 : 4-element sequence
+        DESCRIPTION.
+    I : float
+        DESCRIPTION.
+    M : float
+        DESCRIPTION.
+    N : float
+        DESCRIPTION.
+    O : float
+        DESCRIPTION.
+    dt : float, optional
+        Time step. The default is 0.01.
+
+    Returns
+    -------
+    t : numpy array
+        total time of the simulation.
+    variables_out : numpy array of 4xlen(t)
+        variables T,tau,R and Pi.
+
+    '''
     
     nPts=math.floor((t2-t1)/dt)
     t=np.linspace(t1,t2,nPts)
@@ -56,11 +91,63 @@ def solveODEconstantInputs(t1,t2,variables0,I,M,N,O,dt=0.01):
     
     return (t,variables_out)
 
-def growth_rate(T,R,I=0):
+def growth_rate(T,R,I):
+    '''
+    
+
+    Parameters
+    ----------
+    T : numpy array
+        DESCRIPTION.
+    R : numpy array
+        DESCRIPTION.
+    I : numpy array,
+        DESCRIPTION.
+
+    Returns
+    -------
+    mu : numpy array
+         growth rate
+
+    '''
     mu = muMax*R*(1 - I)*(T/(T + kTOnMu))
     return(mu)
 
+<<<<<<< HEAD
 def solveODEshift(t1,t2,variables0,I,M,N,O,dt=0.001):
+=======
+def solveODEshift(t1,t2,variables0,I,M,N,O,dt=0.01):
+    '''
+    Parameters
+    ----------
+    t1 : float
+        Initial time.
+    t2 : float
+         Final time.
+    variables0 : 4-element sequence
+        T,tau,R,Pi.
+    I : float
+        DESCRIPTION.
+    M : float
+        DESCRIPTION.
+    N : float
+        DESCRIPTION.
+    O : float
+        DESCRIPTION.
+    dt : float, optional
+        time step. The default is 0.01.
+
+    Returns
+    -------
+    T : np.array
+    tau : numpy array
+    R : numpy array
+    Pi : numpy array
+    t : numpy array
+        total time of the simulation.
+
+    '''
+>>>>>>> 2b7a0302b063432fd72c7648797595aea8ede55c
     I_init = I[0]
     M_init = M[0]
     N_init = N[0]
